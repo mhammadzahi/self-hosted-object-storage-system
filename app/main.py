@@ -1,13 +1,13 @@
 from fastapi import FastAPI, UploadFile, File, HTTPException
 from fastapi.responses import FileResponse
 from fastapi.middleware.cors import CORSMiddleware
-from .storage import save_file, get_file
+from storage import save_file, get_file
 
 app = FastAPI(title="Object Storage API", version="1.0.0", description="API for uploading and downloading files.")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Or specify your frontend domains
+    allow_origins=["*"],  # Or specify frontend domains
     allow_credentials=True,
     allow_methods=["POST", "GET"],
     allow_headers=["*"],  # Or ["Content-Type"]
@@ -38,5 +38,5 @@ async def root():
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run("app.main:app", host="0.0.0.0", port=8001, reload=True)# dev
-    uvicorn.run(app, host="0.0.0.0", port=8001)# prod
+    #uvicorn.run(app, host="127.0.0.1", port=8001)
+    uvicorn.run(app, host="0.0.0.0", port=8001)
