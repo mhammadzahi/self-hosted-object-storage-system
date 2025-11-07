@@ -5,6 +5,7 @@ from storage import save_file, get_file
 
 app = FastAPI(title="Object Storage API", version="1.0.0", description="API for uploading and downloading files.")
 
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],  # Or specify frontend domains
@@ -18,6 +19,7 @@ app.add_middleware(
 
 @app.post("/upload/")
 async def upload_file(file: UploadFile = File(...), folder: str = ""):
+    print(file.filename)
     file_id = save_file(file, folder)
     return {"file_id": file_id, "folder": folder}
 
@@ -26,8 +28,10 @@ async def upload_file(file: UploadFile = File(...), folder: str = ""):
 @app.get("/download/{file_id}")
 async def download_file(file_id: str, folder: str = ""):
     file_path = get_file(file_id, folder)
+
     if not file_path:
         raise HTTPException(status_code=404, detail="File not found")
+
     return FileResponse(file_path)
 
 
