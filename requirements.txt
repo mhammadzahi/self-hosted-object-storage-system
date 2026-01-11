@@ -1,3 +1,20 @@
+# FastAPI framework
 fastapi==0.121.0
 uvicorn==0.38.0
+
+# File upload handling
 python-multipart==0.0.20
+
+# Async file operations
+aiofiles==24.1.0
+
+# Environment-based configuration
+pydantic-settings==2.7.1
+
+# For Python 3.11+ compatibility
+typing-extensions>=4.7.0
+
+# Testing (optional)
+requests>=2.31.0
+
+
