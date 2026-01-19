@@ -1,7 +1,3 @@
-"""
-Main FastAPI application with production-ready configuration.
-Implements a self-hosted object storage system (S3 alternative).
-"""
 from datetime import datetime
 from fastapi import FastAPI, Request, status
 from fastapi.middleware.cors import CORSMiddleware
